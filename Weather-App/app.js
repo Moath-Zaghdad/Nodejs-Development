@@ -42,8 +42,10 @@ request(
                 },
                 (err, responce, body) => {
                     if (err) console.log(`Unable to connect to Dark Sky`);
-                    else console.log(body.currently.temperature);
-
+                    else if (responce.statusCode === 200)
+                        console.log(body.currently.temperature);
+                    else
+                        console.log(`Dark Sky ERROR: ${responce.statusCode} `);
                 },
             );
         }
