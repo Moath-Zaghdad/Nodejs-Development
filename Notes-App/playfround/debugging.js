@@ -27,3 +27,10 @@ person.name = 'Zaghdad';
  * > person
  * { name: 'Moath' }
  */
+
+/**
+ * to debug via chrome!!
+ * $> node --inspect-brk playfround/debugging.js
+ *
+ * and open chrome 'chrome://inspect'
+ */
