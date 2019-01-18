@@ -1,5 +1,6 @@
 const request = require('request');
 const yargs = require('yargs');
+const keys = require('./keys');
 
 const argv = yargs
     .options({
@@ -17,9 +18,9 @@ var encodedAddress = encodeURIComponent(argv.a);
 
 request(
     {
-        url:
-            'http://www.mapquestapi.com/geocoding/v1/address?key=9MoCnoGDu4Sk1Swckb47QBn2xEkiaYAA&location=' +
-            encodedAddress,
+        url: `http://www.mapquestapi.com/geocoding/v1/address?key=${
+            keys.mapquest
+        }&location=${encodedAddress}`,
         json: true,
     },
     (err, responce, body) => {
