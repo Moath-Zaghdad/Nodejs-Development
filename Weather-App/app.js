@@ -29,9 +29,23 @@ request(
             console.log(`Unable to find the address`);
         else {
             //console.log(JSON.stringify(body, undefined, 4));
-            console.log(body.results[0].locations[0]);
-            console.log('');
+            //console.log(body.results[0].locations[0]);
             console.log(body.results[0].locations[0].latLng);
+            var latitude = body.results[0].locations[0].latLng.lat;
+            var longitude = body.results[0].locations[0].latLng.lng;
+            request(
+                {
+                    url: `https://api.darksky.net/forecast/${
+                        keys.darksky
+                    }/${latitude},${longitude}`,
+                    json: true,
+                },
+                (err, responce, body) => {
+                    if (err) console.log(`Unable to connect to Dark Sky`);
+                    else console.log(body.currently.temperature);
+
+                },
+            );
         }
     },
 );
